@@ -1,21 +1,16 @@
 ptCount=$(pgrep -c ftcollector+)
-echo $ptCount
-if (( $ptCount > 1 )); then
-  
-  echo "More than one "$ptCount".. Killing all collectors..\n"
-  pgrep ftcollector+ | xargs kill
-  
-  echo "Starting collectors again..\n"  
-  cd /home/ft/ && ./runmiddles.sh
-  
-else
+collector_id=$(pgrep ftcollector+)
+echo $collector_id
+collector_path=$(pwd $collector_id)
 
-	if(( $ptCount == 0 )); 
-		then
-			echo 'No collector exist.. We must start a collector..\n'
-			cd /home/ft/ && ./runmiddles.sh
-		else
-			echo "Nothing to do - "$ptCount" Collector already working..\n"
-	fi
-		
+
+if [[ $ptCount -gt 0 && "$1" == "$collector_path" ]]; 
+	then
+	  echo "Killing all collectors.."
+	  kill $collector_id
+	  cd /home/$1/ && ./runmiddles.sh
+	  # pgrep ftcollector+ | xargs kill
+	else
+	  echo "No current collector process"
+	  cd /home/$1/ && ./runmiddles.sh
 fi
