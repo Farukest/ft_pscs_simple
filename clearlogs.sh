@@ -1,1 +1,1 @@
-truncate -s 0 /home/ft/logs/*.log
+truncate -s 0 /home/$1/logs/*.log

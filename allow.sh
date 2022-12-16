@@ -1,6 +1,5 @@
-chmod 777 /home/ft/chip_pin_ft.sh
-chmod 777 /home/ft/logs/*.log
-chmod 777 /home/ft/logs/*.sh
-chmod 777 /home/ft/*.sh
-chmod 777 /home/ft/*.php
-chmod 777 /home/ft/ftcollector/ftcollector
+chmod 777 /home/$1/logs/*.log
+chmod 777 /home/$1/logs/*.sh
+chmod 777 /home/$1/*.sh
+chmod 777 /home/$1/*.php
+chmod 777 /home/$1/ftcollector/ftcollector
